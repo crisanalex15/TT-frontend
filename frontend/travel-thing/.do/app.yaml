@@ -1,12 +1,12 @@
 name: travel-thing-frontend
 services:
   - name: web
-    source_dir: /
+    source_dir: travel-thing
     github:
       repo: https://github.com/crisanalex15/TT-frontend
       branch: main
-    build_command: npm install --production=false && npm run build
-    run_command: npm start
+    build_command: npm install && npm run build
+    run_command: npm run serve
     environment_slug: node-js
     instance_count: 1
     instance_size_slug: basic-xxs
@@ -18,3 +18,5 @@ services:
         value: production
       - key: PORT
         value: "3000"
+      - key: HOST
+        value: "0.0.0.0"
