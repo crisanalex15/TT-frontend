@@ -1,0 +1,1835 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+.home-container {
+  max-width: 1800px;
+  width: 1800px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+  margin: 0 auto;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 2rem;
+  height: calc(100vh - 200px);
+  align-items: stretch;
+}
+
+@media screen and (max-width: 1024px) {
+  .main-content {
+    grid-template-columns: 350px 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-container {
+    width: 95%;
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-section {
+    height: auto;
+    max-height: none;
+    position: static;
+    overflow-y: visible;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-container {
+    width: 90%;
+    border-radius: 0;
+    margin: 0 auto;
+    padding: 12px;
+  }
+}
+
+.tt-title {
+  color: #4caf50;
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.2em;
+  margin-top: 0;
+}
+.tt-subtitle {
+  color: #222;
+  font-size: 1.1rem;
+}
+/* Formular - coloana stângă */
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  max-height: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: thin;
+  scrollbar-color: #4caf50 #f1f1f1;
+}
+
+.form-section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.form-section::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.form-section::-webkit-scrollbar-thumb {
+  background: #4caf50;
+  border-radius: 4px;
+}
+
+.form-section::-webkit-scrollbar-thumb:hover {
+  background: #388e3c;
+}
+
+.tt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.location-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.fuel-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.route-preferences {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.price-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.checkbox-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #333;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #4caf50;
+}
+
+.calculate-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* Secțiunea atracții turistice din formular */
+.attractions-form-group {
+  border-top: 2px solid #e8f5e9;
+  padding-top: 1.5rem;
+}
+
+.attraction-types {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.attraction-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem;
+  background: #f8f9fa;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.attraction-type:hover {
+  background: #e8f5e9;
+  border-color: #4caf50;
+}
+
+.attraction-type.selected {
+  background: #e8f5e9;
+  border-color: #4caf50;
+  color: #2e7d32;
+}
+
+.attraction-type img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 0.3rem;
+}
+
+.attraction-type span {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.search-btn {
+  width: 100%;
+}
+
+/* Coloana dreaptă - Rezultate */
+.results-section {
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container unificat pentru hartă și detalii */
+.combined-container {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  gap: 1rem;
+  height: 100%;
+  flex: 1;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Secțiunea pentru hartă */
+.map-section {
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Secțiunea pentru detalii */
+.details-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.route-results {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #4caf50 #f1f1f1;
+  flex: 1;
+}
+
+.route-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.route-results::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.route-results::-webkit-scrollbar-thumb {
+  background: #4caf50;
+  border-radius: 3px;
+}
+
+.route-results::-webkit-scrollbar-thumb:hover {
+  background: #388e3c;
+}
+
+.route-results h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.result-item {
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.result-item strong {
+  display: block;
+  color: #4caf50;
+  margin-bottom: 0.2rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.split-cost-section {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  background: #e8f5e9;
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+}
+
+.split-cost-inputs {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.number-input {
+  width: 80px;
+  padding: 0.3rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.split-result {
+  margin-top: 0.8rem;
+  padding: 0.5rem;
+  background: #e8f5e9;
+  border-radius: 4px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.map-container {
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tourist-attractions {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tourist-attractions h3 {
+  color: #4caf50;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.attractions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.close-attractions-btn:hover {
+  background: #d32f2f;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.attractions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.attraction-card {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.attraction-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attraction-card h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.attraction-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.attraction-distance {
+  color: #333;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.maps-link {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.maps-link:hover {
+  background: #388e3c;
+}
+
+/* Atracții compacte în rezultate */
+.attractions-in-results {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #4caf50;
+}
+
+.attractions-in-results h4 {
+  color: #4caf50;
+  margin: 0 0 0.5rem 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.attractions-compact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.attraction-compact {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #e3f2fd;
+  font-size: 0.8rem;
+}
+
+.attraction-compact:last-child {
+  border-bottom: none;
+}
+
+.attraction-compact strong {
+  color: #333;
+  font-weight: 500;
+  flex: 1;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.distance-compact {
+  color: #666;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #e8f5e9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  min-width: fit-content;
+}
+
+.more-attractions {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  font-size: 0.75rem;
+  margin-top: 0.3rem;
+  padding: 0.3rem;
+  background: #f8f9fa;
+  border-radius: 3px;
+}
+
+.more-attractions.clickable {
+  cursor: pointer;
+  color: #4caf50;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.more-attractions.clickable:hover {
+  background: #e8f5e9;
+  border-color: #4caf50;
+  transform: translateY(-1px);
+}
+.tt-form > .tt-input:first-child {
+  max-width: 100%;
+}
+.tt-row {
+  display: flex;
+  gap: 1em;
+}
+.tt-form-group {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+.tt-btn {
+  width: 100%;
+}
+.tt-form-group .tt-btn {
+  margin-top: 0;
+  height: 3.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tt-form-group .tt-input {
+  margin-bottom: 0;
+  opacity: 1;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.tt-form-group-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+  margin: 0;
+}
+
+.tt-form-group-checkbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 1em;
+  margin: 0;
+}
+
+.tt-form-group-checkbox p {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4caf50;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: color 0.3s ease;
+}
+
+.tt-form-group-checkbox p:hover {
+  color: #388e3c;
+}
+
+.tt-form-group-checkbox input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tt-form-group-checkbox input[type="checkbox"]:checked {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.tt-form-group-checkbox input[type="checkbox"]:checked:hover {
+  background-color: #388e3c;
+  border-color: #388e3c;
+}
+
+.tt-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.tt-select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.tt-auto-price {
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #495057;
+  width: 100%;
+  height: 3.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.mobile-price {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .tt-auto-price {
+    margin-left: 0;
+    margin-top: 10px;
+    height: 5em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tt-auto-price {
+    font-size: 15px;
+    padding: 8px;
+    height: 5em;
+    margin: 10px 0;
+  }
+
+  .desktop-price {
+    display: none;
+  }
+
+  .mobile-price {
+    display: block;
+    font-weight: 500;
+  }
+}
+
+.tt-result {
+  grid-column: 2;
+  margin-top: 2em;
+  padding: 1.5em;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.tt-result h3 {
+  color: #4caf50;
+  margin-bottom: 1em;
+  font-size: 1.2em;
+}
+
+.tt-result-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin-bottom: 1em;
+}
+
+.tt-result-details p {
+  margin: 0;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.tt-error {
+  padding: 1em;
+  background-color: #ffebee;
+  color: #c62828;
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.tt-warning {
+  color: #f57c00;
+  background-color: #fff3e0;
+  padding: 0.5em;
+  border-radius: 4px;
+  margin: 0.5em 0;
+  font-size: 0.9em;
+}
+
+.tt-route-preferences {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  margin: 1em 0;
+}
+
+.tt-route-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.8rem;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background: white;
+  color: #4caf50;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.tt-route-btn:hover {
+  background: #e8f5e9;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .results-section {
+    height: calc(100vh - 100px);
+  }
+
+  .combined-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% 40%;
+  }
+
+  .route-preferences {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .tt-route-btn {
+    flex: none;
+  }
+
+  .attraction-types {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .results-section {
+    height: calc(100vh - 80px);
+  }
+
+  .combined-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50% 50%;
+  }
+
+  .form-group h3 {
+    font-size: 1.1rem;
+  }
+
+  .attraction-type {
+    padding: 1rem;
+  }
+
+  .attraction-type img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .route-results h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .route-results {
+    padding: 0.8rem;
+  }
+}
+
+.tt-route-btn.active {
+  background: #4caf50;
+  color: white;
+}
+
+.tt-route-icon {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.error {
+  color: #e53e3e;
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.tt-loading {
+  color: #4caf50;
+  background-color: #e8f5e9;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  border: 1px solid #a5d6a7;
+  font-size: 0.9rem;
+}
+
+.tt-attractions {
+  width: 90%;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.tt-attractions h3 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.tt-attractions-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.tt-attractions-form-image {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.tt-attractions-form-image:hover:not(.disabled) {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: #4caf50;
+}
+
+.tt-attractions-form-image.selected {
+  background-color: #e8f5e9;
+  border-color: #4caf50;
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.tt-attractions-form-image.selected p {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.tt-attractions-form-image.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+}
+
+.tt-attractions-form-image.disabled:hover {
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-color: transparent;
+}
+
+.tt-attractions-form-image p {
+  margin: 0.5rem 0;
+  color: black;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.tt-attractions-form-image img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.tt-attractions-form-input {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  width: 45%;
+  height: 3em;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 28%;
+}
+
+.tt-attractions-form-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 3em;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  margin-left: 35%;
+}
+
+.tt-attractions-form-button:hover {
+  background-color: #388e3c;
+}
+
+.locations-container {
+  grid-column: 2;
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.locations-container h2 {
+  color: #333;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.locations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+}
+
+.location-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.location-card:hover {
+  transform: translateY(-5px);
+}
+
+.location-card h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.location-description {
+  color: #666;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  flex-grow: 1;
+}
+
+.location-distance {
+  color: #2c3e50;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.location-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+  text-align: center;
+  margin-top: auto;
+}
+
+.location-link:hover {
+  background-color: #388e3c;
+}
+
+@media screen and (max-width: 768px) {
+  .locations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .location-card {
+    padding: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .locations-grid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+  }
+
+  .locations-container {
+    padding: 0.8rem;
+  }
+
+  .location-card {
+    margin-bottom: 1rem;
+  }
+}
+
+.tt-split-cost {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #e8f5e9;
+  border-radius: 8px;
+  border: 1px solid #c8e6c9;
+}
+
+.tt-split-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tt-split-input label {
+  color: #2e7d32;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tt-number-input {
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  width: 60px;
+  height: 2em;
+  text-align: center;
+}
+
+.tt-split-input span {
+  color: #2e7d32;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 480px) {
+  .tt-split-input {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.8rem;
+  }
+
+  .tt-split-cost {
+    padding: 0.8rem;
+  }
+
+  .tt-split-input label {
+    font-size: 0.9rem;
+  }
+
+  .tt-number-input {
+    width: 80px;
+    height: 2.5em;
+  }
+
+  .tt-split-result {
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+  }
+
+  .tt-auto-price {
+    font-size: 14px;
+    height: 5em;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.tt-split-result {
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.tt-split-option {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.tt-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #2e7d32;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.tt-checkbox-label:hover {
+  color: #1b5e20;
+}
+
+.tt-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #4caf50;
+}
+
+.location-input-wrapper {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.location-input-wrapper .tt-input {
+  flex: 1;
+  padding-right: 45px;
+}
+
+.map-picker-btn {
+  position: absolute;
+  right: 5px;
+  background: #4caf50;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.map-picker-btn:hover {
+  background: #388e3c;
+  transform: scale(1.05);
+}
+
+.map-picker-btn:active {
+  transform: scale(0.95);
+}
+
+/* Toggle Switch pentru preț automat/manual */
+.price-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+}
+
+.toggle-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #4caf50;
+  transition: 0.3s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: #ff9800;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Modern Checkbox Styling */
+.modern-checkbox-group {
+  margin-bottom: 1rem;
+}
+
+.modern-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background: #f8f9fa;
+  border: 2px solid transparent;
+}
+
+.modern-checkbox:hover {
+  background: #e9ecef;
+  border-color: #4caf50;
+}
+
+.modern-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.modern-checkbox input:checked ~ .checkmark {
+  background-color: #4caf50;
+  border-color: #4caf50;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.modern-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkbox-text {
+  font-weight: 500;
+  color: #333;
+  user-select: none;
+}
+
+/* Range Slider pentru raza de căutare */
+.radius-slider-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+}
+
+.slider-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+.range-slider-wrapper {
+  position: relative;
+}
+
+.range-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-appearance: none;
+  margin-bottom: 0.5rem;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  background: #45a049;
+  transform: scale(1.1);
+}
+
+.range-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #4caf50;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+.range-slider::-moz-range-thumb:hover {
+  background: #45a049;
+  transform: scale(1.1);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+@media screen and (max-width: 768px) {
+  .location-input-wrapper {
+    width: 100%;
+  }
+
+  .tt-row {
+    flex-direction: column;
+  }
+
+  .price-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .modern-checkbox {
+    padding: 0.5rem;
+  }
+
+  .radius-slider-container {
+    padding: 0.75rem;
+  }
+}
+
+/* Slider pentru numărul de atracții */
+.attractions-count-slider {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: #e8f5e9;
+  border-radius: 6px;
+  border: 1px solid #c8e6c9;
+}
+
+.attractions-count-slider .slider-label {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.attractions-count-slider .range-slider {
+  height: 4px;
+  background: linear-gradient(to right, #4caf50, #66bb6a);
+}
+
+.attractions-count-slider .range-slider::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  background: #2e7d32;
+}
+
+.attractions-count-slider .range-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #2e7d32;
+}
+
+/* Butoanele din cardurile de atracții */
+.attraction-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.show-on-map-btn {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.show-on-map-btn:hover {
+  background: #45a049;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.show-on-map-btn:active {
+  transform: translateY(0);
+}
+
+.maps-link {
+  background: #4caf50;
+  color: white !important;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+}
+
+.maps-link:hover {
+  background: #1976d2;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .location-input-wrapper {
+    width: 100%;
+  }
+
+  .tt-row {
+    flex-direction: column;
+  }
+
+  .price-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .modern-checkbox {
+    padding: 0.5rem;
+  }
+
+  .radius-slider-container {
+    padding: 0.75rem;
+  }
+
+  .attractions-count-slider {
+    padding: 0.5rem;
+  }
+
+  .attraction-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Stiluri pentru secțiunea cu butoanele de atracții */
+.attractions-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.cancel-btn {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f !important;
+}
+
+/* Stiluri pentru ecrane ultra-large (4K+) */
+@media screen and (min-width: 1920px) {
+  .main-content {
+    grid-template-columns: 500px 1fr;
+    gap: 4rem;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+
+  .form-section {
+    padding: 2.5rem;
+  }
+
+  .combined-container {
+    padding: 2rem;
+    border-radius: 16px;
+  }
+
+  .attractions-buttons .tt-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+
+  .route-results {
+    padding: 1.5rem;
+  }
+
+  .attraction-card {
+    padding: 1.5rem;
+  }
+
+  .tt-title {
+    font-size: 4rem;
+  }
+
+  .tt-subtitle {
+    font-size: 1.3rem;
+  }
+}
+
+/* Stiluri responsive pentru ecrane mari (Desktop) */
+@media screen and (min-width: 1200px) {
+  .main-content {
+    grid-template-columns: 450px 1fr;
+    gap: 3rem;
+  }
+
+  .form-section {
+    padding: 2rem;
+  }
+
+  .combined-container {
+    padding: 1.5rem;
+  }
+
+  .attractions-buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+
+  .attractions-buttons .tt-btn {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Stiluri pentru tableta mare */
+@media screen and (min-width: 769px) and (max-width: 1199px) {
+  .main-content {
+    grid-template-columns: 380px 1fr;
+    gap: 2rem;
+  }
+
+  .attractions-buttons {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .attractions-buttons .tt-btn {
+    flex: 1;
+  }
+
+  .combined-container {
+    grid-template-columns: 60% 40%;
+  }
+}
+
+/* Stiluri pentru tableta */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .price-toggle {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  .modern-checkbox {
+    padding: 0.6rem;
+  }
+
+  .attractions-count-slider {
+    padding: 0.75rem;
+  }
+}
+
+/* Stiluri pentru tablete mici și telefoane mari */
+@media screen and (max-width: 768px) {
+  .home-container {
+    width: 95%;
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  .main-content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .form-section {
+    height: auto;
+    max-height: none;
+    position: static;
+    overflow-y: visible;
+  }
+
+  .attractions-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .attractions-buttons .tt-btn {
+    width: 100%;
+  }
+
+  .price-toggle {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  .modern-checkbox {
+    padding: 0.5rem;
+  }
+
+  .radius-slider-container {
+    padding: 0.75rem;
+  }
+
+  .attractions-count-slider {
+    padding: 0.5rem;
+  }
+
+  .attraction-buttons {
+    flex-direction: column;
+  }
+
+  .combined-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 300px 1fr;
+    gap: 1rem;
+  }
+
+  .map-section {
+    height: 300px;
+  }
+}
+
+/* Stiluri pentru telefoane mici */
+@media screen and (max-width: 480px) {
+  .home-container {
+    width: 90%;
+    border-radius: 0;
+    margin: 0 auto;
+    padding: 12px;
+  }
+
+  .main-content {
+    gap: 0.75rem;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+
+  .attractions-buttons {
+    gap: 0.5rem;
+  }
+
+  .attractions-buttons .tt-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .price-toggle {
+    padding: 0.5rem;
+  }
+
+  .modern-checkbox {
+    padding: 0.4rem;
+  }
+
+  .modern-checkbox .checkbox-text {
+    font-size: 0.9rem;
+  }
+
+  .attractions-count-slider {
+    padding: 0.4rem;
+  }
+
+  .combined-container {
+    padding: 0.75rem;
+    grid-template-rows: 250px 1fr;
+  }
+
+  .route-results {
+    padding: 0.75rem;
+  }
+
+  .attraction-card {
+    padding: 0.75rem;
+  }
+
+  .map-section {
+    height: 250px;
+  }
+}
+
+/* Stiluri pentru ecrane foarte mici */
+@media screen and (max-width: 360px) {
+  .home-container {
+    width: 95%;
+    padding: 8px;
+  }
+
+  .main-content {
+    gap: 0.75rem;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+
+  .attractions-buttons .tt-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .combined-container {
+    padding: 0.5rem;
+    grid-template-rows: 200px 1fr;
+  }
+
+  .route-results {
+    padding: 0.5rem;
+  }
+
+  .map-section {
+    height: 200px;
+  }
+
+  .attraction-card {
+    padding: 0.5rem;
+  }
+}
